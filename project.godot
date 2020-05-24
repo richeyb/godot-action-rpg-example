@@ -16,12 +16,13 @@ _global_script_class_icons={
 [application]
 
 config/name="Action RPG"
-run/main_scene="res://World.tscn"
+run/main_scene="res://TitleScreen.tscn"
 config/icon="res://icon.png"
 
 [autoload]
 
 PlayerStats="*res://Player/PlayerStats.tscn"
+Global="*res://Global.gd"
 
 [display]
 

@@ -13,7 +13,6 @@ onready var swordHitbox = $HitboxPivot/SwordHitbox
 onready var hurtbox = $HurtBox
 
 onready var audioPlayer = $AudioStreamPlayer
-
 onready var hurtSound = preload("res://Music and Sounds/Hurt.wav")
 
 onready var blinkAnimationPlayer = $BlinkAnimationPlayer
@@ -32,6 +31,7 @@ var stats = PlayerStats
 
 func _ready():
 	randomize()
+	stats.reset()
 	stats.connect("no_health", self, "no_health")
 	animationTree.active = true
 	swordHitbox.knockback_vector = roll_vector
@@ -106,3 +106,5 @@ func _on_HurtBox_invincibility_started():
 
 func _on_HurtBox_invincibility_ended():
 	blinkAnimationPlayer.play("End")
+
+

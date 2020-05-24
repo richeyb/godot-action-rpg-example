@@ -9,6 +9,8 @@ onready var heartUIEmpty = $HeartUIEmpty
 onready var youDiedDisplay = $YouDied
 onready var youDiedSoundEffect = $YouDiedPlayer
 
+onready var gameOverTimer = $GameOverTimer
+
 func set_hearts(value):
 	hearts = clamp(value, 0, max_hearts)
 	if heartUIFull != null:
@@ -17,6 +19,7 @@ func set_hearts(value):
 	if hearts <= 0:
 		youDiedDisplay.visible = true
 		youDiedSoundEffect.play()
+		gameOverTimer.start()
 
 func set_max_hearts(value):
 	max_hearts = value
@@ -28,3 +31,6 @@ func _ready():
 	self.hearts = PlayerStats.hp
 	PlayerStats.connect("health_changed", self, "set_hearts")
 	PlayerStats.connect("max_health_changed", self, "set_max_hearts")
+
+func _on_GameOverTimer_timeout():
+	Global.goto_title_screen()

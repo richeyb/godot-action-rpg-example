@@ -739,10 +739,10 @@ position = Vector2( 152.17, -94.4798 )
 [node name="BatLayer" type="YSort" parent="PlaySpace"]
 
 [node name="Bat2" parent="PlaySpace/BatLayer" instance=ExtResource( 7 )]
-position = Vector2( 192, 56 )
+position = Vector2( 216, 0 )
 
 [node name="Bat" parent="PlaySpace/BatLayer" instance=ExtResource( 7 )]
-position = Vector2( 224, 104 )
+position = Vector2( 271.083, 184 )
 
 [node name="Bat3" parent="PlaySpace/BatLayer" instance=ExtResource( 7 )]
 position = Vector2( 48, 112 )
@@ -859,6 +859,10 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="GameOverTimer" type="Timer" parent="CanvasLayer/HealthUI"]
+wait_time = 5.0
+
 [node name="BackgroundMusic" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 12 )
 autoplay = true
+[connection signal="timeout" from="CanvasLayer/HealthUI/GameOverTimer" to="CanvasLayer/HealthUI" method="_on_GameOverTimer_timeout"]
